@@ -31,23 +31,38 @@ DbHandler* DbHandler::getInstance()
         instance = new DbHandler();
     return instance;
 }
-QList<QString> DbHandler::getAllEmployees()
+QList<QList<QString>> DbHandler::getAllEmployees()
 {
     QString str_select = "SELECT * FROM Employee";
     QSqlQuery query;
+
+
     bool b = query.exec(str_select);
     if(b) {
-        while(query.next()) {
+        QList<QList<QString>>  list ;
+        QList<QString>  row;
 
-            qDebug() << query.value(0).toString() << " " <<
-                query.value(1).toString() << " " <<
-                query.value(2).toString() << " " <<
-                query.value(3).toString() << " " <<
-                query.value(4).toString() << " " << query.numRowsAffected() ;}
+        query.next();
+        int column = query.record().count();
+        qDebug()  <<  column;
+
+        do {
+            for(int i =0 ; i < column; i++){
+                row <<  query.value(i).toString();
+
+            }
+            list << row;
+
+        } while(query.next());
+
+        return list;
+
     } else {
-        qDebug() << "Не могу прочитать данные";
+        qDebug() << "Cant reading data";
         qDebug() << query.lastError().text();
+
+        return {{}};
     }
-    QList<QString> list = { "one", "two", "three" };
-    return list;
+
+
 }
