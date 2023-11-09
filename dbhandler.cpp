@@ -3,6 +3,10 @@
 
 DbHandler::DbHandler()
 {
+    char current_work_dir[FILENAME_MAX];
+    _getcwd(current_work_dir, sizeof(current_work_dir));
+    qDebug() << current_work_dir;
+
     QSqlDatabase connection = QSqlDatabase::addDatabase("QSQLITE");
     connection.setDatabaseName(db_url);
     if (!connection.open()) {

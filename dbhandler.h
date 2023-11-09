@@ -6,7 +6,8 @@
 #include <QList>
 #include <QDebug>
 
-
+#include <stdio.h>
+#include <direct.h>
 class DbHandler
 {
 
@@ -17,7 +18,7 @@ public:
 private:
     DbHandler();
     QSqlDatabase bdConnection;
-    const static inline QString db_url = "D:\\PERSONAL_folder\\MY_PROJECT\\C_C++_C#\\C_C++\\qt\\lab4 qt_bd\\lab4\\bd\\hospital.db";
+    const static inline QString db_url = ".\\bd\\hospital.db";
     static inline DbHandler* instance = nullptr ;
 
 
