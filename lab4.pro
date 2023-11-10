@@ -14,6 +14,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    NonEditTableColumnDelegate.h \
     dbhandler.h \
     mainwindow.h
 

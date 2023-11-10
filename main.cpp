@@ -9,9 +9,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     DbHandler* dbHandler =  DbHandler::getInstance();
-    MainWindow w(dbHandler );
+    MainWindow w(dbHandler);
 
-    w.dbHandler = dbHandler;
 
     w.show();
     return a.exec();
