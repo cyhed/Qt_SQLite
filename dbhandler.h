@@ -14,7 +14,8 @@ class DbHandler
 public:
     ~DbHandler();
     static  DbHandler* getInstance();
-    QList<QList<QString>>  getAllEmployees();
+    QList<QList<QString>>  getAllRecordsFromTable(QString nameTable);
+    QSqlDatabase getDbConnection();
 private:
     DbHandler();
     QSqlDatabase bdConnection;

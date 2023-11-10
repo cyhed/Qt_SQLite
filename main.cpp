@@ -7,14 +7,25 @@
 int main(int argc, char *argv[])
 {    
     QApplication a(argc, argv);
-    MainWindow w;
+
     DbHandler* dbHandler =  DbHandler::getInstance();
-    QList<QList<QString>>  listEmployees = dbHandler->getAllEmployees();
+    MainWindow w(dbHandler );
+
+    w.dbHandler = dbHandler;
+
+    w.show();
+    return a.exec();
+}
+
+
+
+
+
+/*
+    QList<QList<QString>>  listEmployees = dbHandler->getAllRecordsFromTable("Employee");
     for(int i = 0 ; i< listEmployees.size() ; i++){
         QList<QString> row = listEmployees.at(i);
         for(int j = 0 ; j < row.size() ; j++)
             qDebug() << row.at(j);
     }
-    w.show();
-    return a.exec();
-}
+*/

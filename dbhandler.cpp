@@ -31,9 +31,9 @@ DbHandler* DbHandler::getInstance()
         instance = new DbHandler();
     return instance;
 }
-QList<QList<QString>> DbHandler::getAllEmployees()
+QList<QList<QString>> DbHandler::getAllRecordsFromTable(QString nameTable)
 {
-    QString str_select = "SELECT * FROM Employee";
+    QString str_select = "SELECT * FROM " + nameTable;
     QSqlQuery query;
 
 
@@ -63,6 +63,11 @@ QList<QList<QString>> DbHandler::getAllEmployees()
 
         return {{}};
     }
-
-
 }
+
+QSqlDatabase DbHandler::getDbConnection(){
+    return this->bdConnection;
+}
+
+
+
