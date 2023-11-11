@@ -57,15 +57,12 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-     qDebug() << model1->tableName();
-
-    QString str_insert = "INSERT INTO "+ model1->tableName()  +" VALUES ();";
-
-    QSqlQuery query;
-    bool b = query.exec(str_insert);
-    if (!b) {
-        qDebug() << query.lastError().text();
-    }
+    int lastRow = model1->rowCount();
+    model1->insertRow(lastRow);
+    model1->setData(model1->index(lastRow,1),"");
+    ui->tableView->selectRow(lastRow);
+    ui->tableView->setFocus();
+    model1->submitAll();
 }
 
 
