@@ -31,6 +31,7 @@ MainWindow::MainWindow(DbHandler* dbHandler ,QWidget *parent)
     ui->tableView->setItemDelegateForColumn(0, new NonEditTableColumnDelegate());
     ui->tableView->setModel(model1);
 
+     ui->submit->setEnabled(false);
 
 
 
@@ -60,6 +61,8 @@ void MainWindow::on_pushButton_2_clicked()
     int lastRow = model1->rowCount();
     this->lastRow = lastRow;
     model1->insertRow(lastRow);
+    model1->setData(model1->index(lastRow,1),"");
+     ui->submit->setEnabled(true);
 }
 
 
@@ -90,9 +93,11 @@ void MainWindow::on_Update_button_clicked()
 
 void MainWindow::on_submit_clicked()
 {
-    model1->setData(model1->index(lastRow,1),"");
+
     ui->tableView->selectRow(lastRow);
     ui->tableView->setFocus();
     model1->submitAll();
+    ui->submit->setEnabled(false);
+
 }
 
