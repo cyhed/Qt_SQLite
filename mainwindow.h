@@ -34,7 +34,10 @@ private slots:
 
     void on_Update_button_clicked();
 
+    void on_submit_clicked();
+
 private:
+    int lastRow;
     QSqlTableModel *model1;
     Ui::MainWindow *ui;
 };

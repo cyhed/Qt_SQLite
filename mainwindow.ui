@@ -61,7 +61,14 @@
       <item>
        <widget class="QPushButton" name="pushButton_2">
         <property name="text">
-         <string>add</string>
+         <string>add row</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="submit">
+        <property name="text">
+         <string>submit add</string>
         </property>
        </widget>
       </item>
